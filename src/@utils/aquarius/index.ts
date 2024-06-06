@@ -27,6 +27,7 @@ const saasFieldExists = {
   }
 }
 
+
 export function escapeEsReservedCharacters(value: string): string {
   // eslint-disable-next-line no-useless-escape
   const pattern = /([\!\*\+\-\=\<\>\&\|\(\)\[\]\{\}\^\~\?\:\\/"])/g
@@ -130,7 +131,7 @@ export function generateBaseQuery(
           ...(baseQueryParams.chainIds
             ? [getFilterTerm('chainId', baseQueryParams.chainIds)]
             : []),
-          getFilterTerm('_index', 'v510'),
+          getFilterTerm('_index', index),
           ...(baseQueryParams.ignorePurgatory
             ? []
             : [getFilterTerm('purgatory.state', false)]),
